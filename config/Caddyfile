@@ -1,0 +1,9 @@
+www.toapi-one.com {
+    proxy / 127.0.0.1:5000
+    timeouts none
+    gzip
+}
+
+toapi-one.com {
+    redir http://www.toapi-one.com
+}
