@@ -29,4 +29,6 @@ class Question(Item):
 
     class Meta:
         source = None
-        route = '/question/.*?'
+        route = {
+            '/question/:path': '/question/:path'
+        }

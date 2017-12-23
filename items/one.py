@@ -23,4 +23,6 @@ class One(Item):
 
     class Meta:
         source = None
-        route = '/one/.*?'
+        route = {
+            '/one/:path': '/one/:path'
+        }

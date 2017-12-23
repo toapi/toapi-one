@@ -16,4 +16,5 @@ api.register(Article)
 api.register(Question)
 api.register(One)
 
-api.serve(ip='0.0.0.0', port='5000')
+if __name__ == '__main__':
+    api.serve()

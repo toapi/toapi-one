@@ -21,4 +21,6 @@ class Article(Item):
 
     class Meta:
         source = None
-        route = '/article/.*?'
+        route = {
+            '/article/:path': '/article/:path'
+        }

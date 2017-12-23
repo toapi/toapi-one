@@ -26,7 +26,9 @@ class IndexOne(Item):
 
     class Meta:
         source = None
-        route = '/$'
+        route = {
+            '/index/': '/'
+        }
 
 
 class IndexArticle(Item):
@@ -53,7 +55,9 @@ class IndexArticle(Item):
 
     class Meta:
         source = None
-        route = '/$'
+        route = {
+            '/index/': '/'
+        }
 
 
 class IndexQuestion(Item):
@@ -80,4 +84,6 @@ class IndexQuestion(Item):
 
     class Meta:
         source = None
-        route = '/$'
+        route = {
+            '/index/': '/'
+        }
