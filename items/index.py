@@ -14,11 +14,13 @@ class IndexOne(Item):
             each_item = {}
             each_item['one_index'] = item.cssselect('div.fp-one-titulo-pubdate p.titulo')[0].text.strip()
             each_item['one_type'] = item.cssselect('div.fp-one-imagen-footer')[0].text.strip()
-            each_item['one_url'] = 'http://127.0.0.1:5000/' + item.cssselect('div.fp-one-cita a')[0].get('href')
+            each_item['one_url'] = 'http://127.0.0.1:5000/' + item.cssselect('div.fp-one-cita a')[0].get(
+                'href').replace(
+                "http://wufazhuce.com", "one")
             abstract = ''
             for node in item.cssselect('div.fp-one-cita a')[0].itertext():
                 abstract += node.strip() + "    "
-            each_item['one_abstract'] = abstract
+            each_item['one_abstract'] = abstract.strip()
             each_item['date'] = item.cssselect('div.fp-one-titulo-pubdate p.dom')[0].text + " " + \
                                 item.cssselect('div.fp-one-titulo-pubdate p.may')[0].text
             item_list.append(each_item)
@@ -27,7 +29,7 @@ class IndexOne(Item):
     class Meta:
         source = None
         route = {
-            '/index/': '/'
+            '/one/': '/'
         }
 
 
@@ -40,8 +42,14 @@ class IndexArticle(Item):
     one_article_url = Css(".fp-one-articulo p.one-articulo-titulo a", attr='href')
     one_article_list = Css(".fp-one-articulo ul li")
 
+    def clean_one_article_index(self, one_article_index):
+        return one_article_index.strip()
+
+    def clean_one_article_title(self, one_article_title):
+        return one_article_title.strip()
+
     def clean_one_article_url(self, one_article_url):
-        return 'http://127.0.0.1:5000/' + one_article_url
+        return 'http://127.0.0.1:5000/' + one_article_url.replace("http://wufazhuce.com", "one")
 
     def clean_one_article_list(self, one_article_list):
         article_list = []
@@ -49,14 +57,15 @@ class IndexArticle(Item):
             each_article = {}
             each_article['one_index'] = article.cssselect('span')[0].text.strip()
             each_article['one_title'] = article.cssselect('a')[0].text.strip()
-            each_article['one_article_url'] = 'http://127.0.0.1:5000/' + article.cssselect('a')[0].get('href')
+            each_article['one_article_url'] = 'http://127.0.0.1:5000/' + article.cssselect('a')[0].get('href').replace(
+                "http://wufazhuce.com", "one")
             article_list.append(each_article)
         return article_list
 
     class Meta:
         source = None
         route = {
-            '/index/': '/'
+            '/one/': '/'
         }
 
 
@@ -69,8 +78,14 @@ class IndexQuestion(Item):
     one_question_url = Css(".fp-one-cuestion p.one-cuestion-titulo a", attr='href')
     one_question_list = Css(".fp-one-cuestion ul li")
 
+    def clean_one_question_index(self, one_question_index):
+        return one_question_index.strip()
+
+    def clean_one_question_title(self, one_question_title):
+        return one_question_title.strip()
+
     def clean_one_question_url(self, one_question_url):
-        return 'http://127.0.0.1:5000/' + one_question_url
+        return 'http://127.0.0.1:5000/' + one_question_url.replace("http://wufazhuce.com", "one")
 
     def clean_one_question_list(self, one_question_list):
         question_list = []
@@ -78,12 +93,13 @@ class IndexQuestion(Item):
             each_question = {}
             each_question['one_index'] = question.cssselect('span')[0].text.strip()
             each_question['one_title'] = question.cssselect('a')[0].text.strip()
-            each_question['one_question_url'] = 'http://127.0.0.1:5000/' + question.cssselect('a')[0].get('href')
+            each_question['one_question_url'] = 'http://127.0.0.1:5000/' + question.cssselect('a')[0].get(
+                'href').replace("http://wufazhuce.com", "one")
             question_list.append(each_question)
         return question_list
 
     class Meta:
         source = None
         route = {
-            '/index/': '/'
+            '/one/': '/'
         }

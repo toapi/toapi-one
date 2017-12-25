@@ -24,5 +24,5 @@ class One(Item):
     class Meta:
         source = None
         route = {
-            '/one/:path': '/one/:path'
+            '/one/one/:path': '/one/:path'
         }
